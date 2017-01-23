@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <title>介绍篇</title>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{a}}</p>
+        <p v-text="a"></p>
+    </div>
+    <hr>
+
+    <div id="app2">
+        <span v-bind:title="message">
+        	please see my title.
+        </span>
+    </div>
+    <hr>
+
+    <div id="app3">
+        <p>下面的内容可以可以通过命令动态隐藏(vm3.seen)：</p>
+        <span v-if="seen">求隐藏！</span>
+    </div>
+    <hr>
+
+    <div id="app4">
+        <ol>
+            <li v-for="o in list">
+                {{o.name}}
+            </li>
+        </ol>
+    </div>
+    <hr>
+
+    <div id="app5">
+    	<p>{{message}}</p>
+    	<button v-on:click="reversemessage">点我把上一行信息倒序</button>
+    </div>
+    <hr>
+
+    <div id="app6">
+    	<p>{{message}}</p>
+    	<input v-model="message">
+    </div>
+    <hr>
+
+
+
+</body>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script type="text/javascript">
+// 最简洁的模板语法来声明式渲染
+var vm = new Vue({
+    el: "#app",
+    data: {
+        a: 'hello vue'
+    }
+
+});
+// 指令绑定到元素属性
+var vm2 = new Vue({
+    el: "#app2",
+    data: {
+        message: 'you loaded this page on ' + new Date()
+    }
+
+});
+// 条件与循环
+var vm3 = new Vue({
+    el: "#app3",
+    data: {
+        seen: true
+    }
+
+});
+// 列表数据展示
+var vm4 = new Vue({
+    el: "#app4",
+    data: {
+        list: [{
+            name: '张大'
+        }, {
+            name: '李小'
+        }, {
+            name: 'xixi'
+        }]
+    }
+
+});
+// 数据双向绑定1
+var vm5 = new Vue({
+	el: "#app5",
+	data:{
+		message:'hello vue'
+	},
+    methods:{
+		reversemessage:function(){
+			this.message = this.message.split('').reverse().join('')
+		}
+	}
+	
+});
+// 双向数据绑定2
+var vm6 = new Vue({
+	el: "#app6",
+	data:{
+		message:'hello vue'
+	}
+	
+})
+
+
+
+</script>
+
+</html>
